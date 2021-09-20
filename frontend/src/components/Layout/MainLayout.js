@@ -30,7 +30,20 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,    
+    textAlign: 'center'
   },
+  menu: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  first: {
+    color: 'white',
+    textTransform: 'uppercase'
+  },
+  chat: {
+    paddingLeft: 20,
+    color: 'white'
+  }
 }));
 const StyledMenu = withStyles({
   paper: {
@@ -77,15 +90,19 @@ export default function ButtonAppBar({ children }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  console.log("currentUser", currentUser);
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <Link to="/"><Typography variant="h6" className="title">Robopro</Typography></Link>
+            <Typography variant="span"><Link className={classes.first} to="/">Robopro</Link></Typography>
+            <Typography variant="span"><Link className={classes.chat} to="/chat">チャットボット</Link></Typography>
           </Typography>
           {authData ? (
-            <div className="menu-div">
+            <div className={classes.menu}>              
               <button
                 className="menu-button"
                 aria-haspopup="true"
@@ -98,7 +115,7 @@ export default function ButtonAppBar({ children }) {
                       <div
                         className="menu-avater"
                         style={{
-                          backgroundImage: `url(https://chatbotmodels92.s3.ap-northeast-1.amazonaws.com/${currentUser?.profile.avatar})`,
+                          backgroundImage: `url(${currentUser?.profile.avatar})`,
                         }}
                       ></div>
                     ) : (
@@ -109,6 +126,7 @@ export default function ButtonAppBar({ children }) {
                         }}
                       ></div>
                     )}
+                    
                   </>
                 )}
               </button>

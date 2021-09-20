@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProfileAvatar({ onChange, value }) {
   const classes = useStyles();
+  console.log("avatarLoader", value);
 
   const handleChange = (ele) => {
     var file = ele.target.files[0];

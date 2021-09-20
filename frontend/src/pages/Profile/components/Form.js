@@ -9,7 +9,7 @@ const localStorageService = LocalStorageService.getService();
 
 export const Form = (props) => {
   const {
-    values: { last_name, first_name,email },
+    values: { last_name, first_name, email },
     errors,
     touched,
     handleSubmit,
@@ -45,7 +45,7 @@ export const Form = (props) => {
   };
   const token = localStorageService.getAccessToken();
 
-  console.log("token", token);
+  console.log("avatar", avatar);
 
   return (
     <form onSubmit={handleSubmit} style={{ margin: "auto" }}>
@@ -57,6 +57,11 @@ export const Form = (props) => {
         alignItems="center"
       >
         <AvatarUploader value={avatar?.avatar} onChange={handleAvatar} />
+        {/* <AvatarUploader onChange={handleAvatar}>
+          <img src="`url(${avatar?.avatar})`" />
+          <div style={{backgroundImage: '${avatar?.avatar}'}}>
+          </div>
+        </AvatarUploader> */}
         <Box>
           <Button
             onChange={uploadImage}

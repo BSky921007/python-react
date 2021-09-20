@@ -11,28 +11,30 @@ const RouteMiddleWare = ({ children, layout: Layout, ...rest }) => {
   console.log(authData, authStatus)
   return (
     <>
-    { isLoading?
-      <div>Loading</div>:
-      <Route
-        {...rest}
-        render={({ location }) =>
-          isValid ? (
-            Layout ? (
-              <Layout>{children}</Layout>
-            ) : (
-              <> {children} </>
-            )
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: { from: location },
-              }}
-            />
-          )
-        }
-      />
-    }
+      { isLoading
+        ?
+          <div>Loading</div>
+        :
+          <Route
+            {...rest}
+            render={({ location }) =>
+              isValid ? (
+                Layout ? (
+                  <Layout>{children}</Layout>
+                ) : (
+                  <> {children} </>
+                )
+              ) : (
+                <Redirect
+                  to={{
+                    pathname: "/login",
+                    state: { from: location },
+                  }}
+                />
+              )
+            }
+          />
+      }
     </>
   );
 };

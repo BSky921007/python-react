@@ -66,11 +66,13 @@ export function useUpdateProfilePicture() {
   const queryClient = useQueryClient();
   const { toastDispatch } = useToastContext();
 
+  console.log("update avatar");
+
   const res = useMutation(
     (body) => {
       console.log("image src", body.target.files[0]);
       var formdata = new FormData();
-      formdata.append("avatar", body.target.files[0], "image.jpeg");
+      formdata.append("avatar", body.target.files[0]);
       
       return axiosInstance
         .put("/api/user/change-avatar/", formdata, {

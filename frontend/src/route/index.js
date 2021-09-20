@@ -37,7 +37,7 @@ const Routes = () => {
         </Route>
         <Route path={`/`} exact>
           <Layout>
-            <Home />
+            {/* <Home /> */}
           </Layout>
         </Route>
         <ProtectedRoute path={`/chat`} layout={Layout} exact>

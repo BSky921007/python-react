@@ -42,12 +42,15 @@ const EditProfile = () => {
   const { mutate: updateUser } = useUpdateUser();
   const { mutate: uploadProfilePicture } = useUpdateProfilePicture();
   const { mutate: updatePassword } = useChangePassword();
+
+  console.log("currentUser", currentUser);
+  console.log(currentUser.profile.avatar);
   useEffect(() => {
     setCurrentProfile(currentUser.profile);
     setUpdatedValues({
       ...currentUser.profile,
       avatar: {
-        avatar: `https://s3.console.aws.amazon.com/s3/object/chatbotmodels92`,
+        avatar: currentUser.profile.avatar ? currentUser.profile.avatar : '', 
       },
     });
   }, []);
@@ -77,6 +80,8 @@ const EditProfile = () => {
 
   const [formvalue, setUpdatedValues] = useState({});
 
+  console.log("formValue", formvalue);
+
   return (
     <div className={classes.root}>
       <div className={classes.container}>
@@ -102,7 +107,7 @@ const EditProfile = () => {
               enableReinitialize={true}
             />
           </Box>
-           
+          
           <Formik
             render={(props) => <ChangePassword {...props} isLoading={false} />}
             initialValues={passwordFormValues}

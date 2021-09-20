@@ -74,7 +74,7 @@ export default function MediaCard({
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        // image="https://i.pinimg.com/originals/9e/8d/74/9e8d747819250be17bff875604223894.jpg"
+        //image="https://i.pinimg.com/originals/9e/8d/74/9e8d747819250be17bff875604223894.jpg"
         title="Contemplative Reptile"
         style={{
           display: "flex",

@@ -7,9 +7,6 @@ import UserDataProvider from './store/UserContext';
 const queryClient = new QueryClient();
 
 function App() {
-
-  
-
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>

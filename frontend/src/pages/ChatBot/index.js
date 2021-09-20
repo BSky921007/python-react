@@ -4,10 +4,11 @@ import { Box } from "@material-ui/core";
 import SearchBar from "../../components/SearchBar";
 import BotChat from './components/BotChat'
 import { makeStyles } from "@material-ui/core/styles";
-
+import LocalStorageService from "../../utils/localStorageService";
 // import { useFetchAllUsers } from "../../hooks/users/useUsers";
 // import { useCurrentUser } from "../../hooks/auth/useCurrentUser";
 
+const localStorageService = LocalStorageService.getService();
 const useStyles = makeStyles((theme) => ({
   searchBarContainer: {
     position: "absolute",
@@ -31,6 +32,8 @@ const BotRedirect = ({ url, message }) => {
 };
 
 const ChatPage = () => {
+  const currentUser = localStorageService.getCurrentUser();
+
   const classes = useStyles();
   const steps = [
     {
@@ -56,6 +59,16 @@ const ChatPage = () => {
       trigger: 'search',
     },
   ];
+
+  var userImageURL = "";
+  if(currentUser?.profile?.avatar.length === 0) {
+    userImageURL = '/man.png';
+  } else {
+    userImageURL = currentUser.profile.avatar;
+  }
+
+  console.log('userImageURL', userImageURL);
+
   return (
     <Box style={{width: '100%', display: 'flex', justifyContent: 'center', flexGrow: 1, paddingTop: 30, paddingBottom: 30}}>
       <ChatBot 
@@ -69,7 +82,8 @@ const ChatPage = () => {
         style={{border: 'none', borderRadius: '0px', boxShadow: 'none', width: '650px', display: 'flex', flexDirection: 'column', height: '100%'}}
         customStyle={{background: 'none', boxShadow: 'none', display: 'flex', justifyContent: 'flex-start', margin: 0, padding: 0}}
         botAvatar='/bot_avatar.svg'
-        userAvatar='/man.png'
+        userAvatar={userImageURL}
+        placeholder="入力してください。"
         contentStyle={{flexGrow: 1}}
       />
     </Box>
