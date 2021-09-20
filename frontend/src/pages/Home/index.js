@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <Box width="100%">
       <Box className={classes.searchBarContainer}>
-        <Link to="/chat" >Start Chating</Link>
+        <Link to="/chat" >チャットボット</Link>
       </Box>
       {/* <Bubbles data={data?.data} /> */}
     </Box>

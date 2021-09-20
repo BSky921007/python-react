@@ -35,7 +35,7 @@ const ChatPage = () => {
   const steps = [
     {
       id: '1',
-      message: 'Hello, I am a chat bot. Please ask me.',
+      message: 'おはよう！',
       trigger: 'search',
     },
     {
@@ -43,7 +43,7 @@ const ChatPage = () => {
       user: true,
       validator: (value) => {
         if (!value) {
-          return 'Please enter value';
+          return '入力してください！';
         }
         return true;
       },

@@ -9,7 +9,7 @@ const localStorageService = LocalStorageService.getService();
 
 export const Form = (props) => {
   const {
-    values: { user_name, profession, self_introduction, country },
+    values: { last_name, first_name,email },
     errors,
     touched,
     handleSubmit,
@@ -27,10 +27,9 @@ export const Form = (props) => {
   const change = (e) => {
     handleChange(e);
     setValues({
-      user_name,
-      profession,
-      self_introduction,
-      country,
+      last_name,
+      first_name,
+      email,
       avatar: avatar,
     });
   };
@@ -38,14 +37,15 @@ export const Form = (props) => {
   const handleCountry = (name, code) => {
     setFieldValue(name, code);
     setValues({
-      user_name,
-      profession,
-      self_introduction,
-      country,
+      last_name,
+      first_name,
+      email,
       avatar: avatar,
     });
   };
   const token = localStorageService.getAccessToken();
+
+  console.log("token", token);
 
   return (
     <form onSubmit={handleSubmit} style={{ margin: "auto" }}>
@@ -69,47 +69,38 @@ export const Form = (props) => {
       </Box>
 
       <TextField
-        name="ユーザー名"
-        helperText={touched.user_name ? errors.user_name : ""}
-        error={touched.user_name && Boolean(errors.user_name)}
-        label="ユーザー名"
-        value={user_name}
+        name="last_name"
+        helperText={touched.last_name ? errors.last_name : ""}
+        error={touched.last_name && Boolean(errors.last_name)}
+        label="性"
+        value={last_name}
         onChange={change}
       />
       <TextField
-        name="profession"
-        helperText={touched.profession ? errors.profession : ""}
-        error={touched.profession && Boolean(errors.profession)}
-        label="職業"
-        value={profession}
+        name="first_name"
+        helperText={touched.first_name ? errors.first_name : ""}
+        error={touched.first_name && Boolean(errors.first_name)}
+        label="名"
+        value={first_name}
         onChange={change}
-      />
-
+      />      
       <TextField
-        name="self_introduction"
-        helperText={touched.self_introduction ? errors.self_introduction : ""}
-        error={touched.self_introduction && Boolean(errors.self_introduction)}
-        label="紹介"
-        fullWidth
-        value={self_introduction}
+        name="email"
+        helperText={touched.email ? errors.email : ""}
+        error={touched.email && Boolean(errors.email)}
+        label="メールアドレス"
+        value={email}
         onChange={change}
-        multiline={true}
-      />
-      <ReactFlagsSelect
-        selected={country}
-        onSelect={(code) => {
-          handleCountry("country", code);
-        }}
       />
       <div className="profile-update">
-      <Button
-        type="submit"
-        isLoading={isLoading}
-        onChange={handleSubmit}
-        title="プロフィール更新"
-        disabled={!isValid || isLoading}
-        style={{ width: '200px', }}
-      />
+        <Button
+          type="submit"
+          isLoading={isLoading}
+          onChange={handleSubmit}
+          title="プロフィール更新"
+          disabled={!isValid || isLoading}
+          style={{ width: '200px', }}
+        />
       </div>
     </form>
   );

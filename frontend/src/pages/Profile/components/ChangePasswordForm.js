@@ -4,7 +4,7 @@ import TextField from "../../../components/TextInput";
 
 export const ChangePassword = (props) => {
   const {
-    values: { current_password, new_password, new_password_confirmation },
+    values: { old_password, new_password, new_password_confirmation },
     errors,
     touched,
     handleSubmit,
@@ -24,17 +24,17 @@ export const ChangePassword = (props) => {
   return (
     <form onSubmit={handleSubmit} style={{ margin: "auto" }}>
       <TextField
-        name="現在パスワード"
-        helperText={touched.current_password ? errors.current_password : ""}
-        error={touched.current_password && Boolean(errors.current_password)}
+        name="old_password"
+        helperText={touched.old_password ? errors.old_password : ""}
+        error={touched.old_password && Boolean(errors.old_password)}
         label="現在パスワード"
         fullWidth
         type="password"
-        value={current_password}
+        value={old_password}
         onChange={handleChange}
       />
       <TextField
-        name="新しいパスワード"
+        name="new_password"
         helperText={touched.new_password ? errors.new_password : ""}
         error={touched.new_password && Boolean(errors.new_password)}
         label="新しいパスワード"
@@ -44,7 +44,7 @@ export const ChangePassword = (props) => {
         onChange={handleChange}
       />
       <TextField
-        name="パスワード確認"
+        name="new_password_confirmation"
         helperText={
           touched.new_password_confirmation
             ? errors.new_password_confirmation

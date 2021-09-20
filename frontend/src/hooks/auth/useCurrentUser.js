@@ -6,11 +6,10 @@ const axiosInstance = interceptor();
 
 export function useCurrentUser() {
   const data = useQuery("currentuser", () =>
-    axiosInstance.get("/api/user").then((res) => res.data)
+    axiosInstance.get("/api/user/details/").then((res) => res.data)
   );
   if (data?.data) {
     localStorageService.setCurrentUser(data?.data);
   }
-  // }, 3000);
   return data;
 }

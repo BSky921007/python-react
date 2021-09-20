@@ -47,12 +47,12 @@ const Routes = () => {
           <Layout>
             <Users />
           </Layout>
-        </Route>
+        </Route>*/}
         <ProtectedRoute path={`/profile`}>
           <Layout>
             <Profile />
           </Layout>
-        </ProtectedRoute> */}
+        </ProtectedRoute> 
         {/* <ProtectedRoute>
           <h4> Not Found </h4>
         </ProtectedRoute> */}

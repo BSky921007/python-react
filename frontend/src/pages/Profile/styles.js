@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     margin: "auto",
-    display: "grid",
+    display: "block",
     gridTemplateColumns: "1fr 1fr",
     [theme.breakpoints.down("sm")]: {
       gridTemplateColumns: "1fr",

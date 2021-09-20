@@ -24,21 +24,22 @@ export const Form = (props) => {
   return (
     <form onSubmit={handleSubmit} style={{ margin: "auto",  width: "90%"}}>
       <TextField
-        name="first_name"
-        helperText={touched.first_name ? errors.first_name : ""}
-        error={touched.first_name && Boolean(errors.first_name)}
-        label="ファーストネーム"
-        value={first_name}
-        onChange={handleChange}
-      />
-      <TextField
         name="last_name"
         helperText={touched.last_name ? errors.last_name : ""}
         error={touched.last_name && Boolean(errors.last_name)}
-        label="苗字"
+        label="性"
         value={last_name}
         onChange={handleChange}
       />
+      <TextField
+        name="first_name"
+        helperText={touched.first_name ? errors.first_name : ""}
+        error={touched.first_name && Boolean(errors.first_name)}
+        label="名"
+        value={first_name}
+        onChange={handleChange}
+      />
+      
       <TextField
         name="email"
         helperText={touched.email ? errors.email : ""}

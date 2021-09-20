@@ -19,9 +19,9 @@ const BotChat = ({steps, triggerNextStep}) => {
                 .then((response) => {
                     if (response)
                         return response.data
-                    else return 'Please try again.'
+                    else return 'もう一度入力してください！'
                 })
-                .catch((error) => ('Network Error. Please try again.'))
+                .catch((error) => ('ネットワークエラー!もう一度入力してください。'))
             }
             run(getChatResponse(search))
         }

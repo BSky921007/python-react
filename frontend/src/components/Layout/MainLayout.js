@@ -13,7 +13,7 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import SendIcon from "@material-ui/icons/Send";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link, useHistory } from "react-router-dom";
-// import { useCurrentUser } from "../../hooks/auth/useCurrentUser";
+import { useCurrentUser } from "../../hooks/auth/useCurrentUser";
 import { useAppContext } from '../../store/AppContext';
 import "../index.css";
 import { useUserContext } from "../../store/UserContext";
@@ -67,7 +67,7 @@ export default function ButtonAppBar({ children }) {
   const history = useHistory();
   const { authData, setAuthData  } = useUserContext();
   const current = null;
-  // const { data: currentUser } = useCurrentUser();
+  const { data: currentUser } = useCurrentUser();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -82,7 +82,7 @@ export default function ButtonAppBar({ children }) {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <Link to="/"><Typography variant="h6" className="title">Characters</Typography></Link>
+            <Link to="/"><Typography variant="h6" className="title">Robopro</Typography></Link>
           </Typography>
           {authData ? (
             <div className="menu-div">
@@ -94,11 +94,11 @@ export default function ButtonAppBar({ children }) {
               >
                 {authData && (
                   <>
-                    {current?.user?.profile.avatar != null ? (
+                    {currentUser?.profile.avatar != null ? (
                       <div
                         className="menu-avater"
                         style={{
-                          backgroundImage: `url(https://api.goodracing.net/images/users/${current?.user?.profile.avatar})`,
+                          backgroundImage: `url(https://chatbotmodels92.s3.ap-northeast-1.amazonaws.com/${currentUser?.profile.avatar})`,
                         }}
                       ></div>
                     ) : (
@@ -129,9 +129,9 @@ export default function ButtonAppBar({ children }) {
                   ""
                 )}
                 <StyledMenuItem>
-                  {/* <Link to="/profile">
+                  <Link to="/profile">
                     <Typography variant="h6">プロフィール</Typography>{" "}
-                  </Link> */}
+                  </Link>
                 </StyledMenuItem>
                 {!authData && (
                   <>

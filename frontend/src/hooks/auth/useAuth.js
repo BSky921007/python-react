@@ -15,7 +15,9 @@ const useAuth = () => {
             if (!token) {
                 reject('no token');
             } else {
-                axiosInstance.get("/api/login/token/verify/")
+                axiosInstance.post("/api/login/token/verify/", {
+                    token
+                })
                 .then((res) => (resolve({token, auth: true})))
                 .catch((error) => (resolve({token, auth: true})));
             }
