@@ -1,2 +1,2 @@
 This is python django backend project. 
-2021.11.01
+2021.11.02
